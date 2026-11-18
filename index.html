@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Universe Called Us ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --pink: #f7dce5;
+  --rose: #c87593;
+  --dark: #75485d;
+  --cream: #fff9f5;
+  --pale: #fff0f4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 55px 20px;
+  animation: appear .7s ease;
+}
+
+.screen.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+h1 { font-size: clamp(42px, 8vw, 72px); }
+h2 { font-size: 38px; }
+
+p {
+  line-height: 1.8;
+}
+
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 10px;
+  color: var(--rose);
+}
+
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  background:
+    radial-gradient(circle at 20% 20%, #fff 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 30%, #fff 0 2px, transparent 3px),
+    linear-gradient(145deg, #fff4f5, #f6d6e3, #fce8eb);
+  background-size: 100px 100px, 130px 130px, auto;
+}
+
+.hero-icon {
+  font-size: 75px;
+  margin: 15px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.primary {
+  background: var(--rose);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin: 12px 5px;
+  transition: .25s;
+}
+
+.primary:hover {
+  background: var(--dark);
+  transform: translateY(-2px);
+}
+
+.secondary {
+  background: white;
+  color: var(--dark);
+  border: 1px solid #ebc6d4;
+  padding: 12px 22px;
+  border-radius: 25px;
+  margin: 6px;
+}
+
+.back {
+  display: block;
+  margin: 25px auto;
+  background: none;
+  border: none;
+  color: var(--rose);
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  border: 1px solid #f0d9e0;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 15px auto;
+  max-width: 500px;
+  box-shadow: 0 8px 25px #b77b8b0d;
+}
+
+.illustration {
+  font-size: 45px;
+  margin: 12px;
+}
+
+.letter {
+  background: #fff7f5;
+  border: 1px solid #e9c8d2;
+  padding: 22px;
+  border-radius: 15px;
+  margin: 12px auto;
+  max-width: 450px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.letter:hover { transform: scale(1.02); }
+
+.message {
+  display: none;
+  padding: 15px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.message.open { display: block; }
+
+.progress {
+  height: 7px;
+  background: #f4e2e8;
+  border-radius: 10px;
+  max-width: 300px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: var(--rose);
+  transition: .5s;
+}
+
+.game-choice {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  margin: 10px auto;
+  padding: 14px;
+  border: 1px solid #e9c8d2;
+  border-radius: 14px;
+  background: white;
+  color: var(--dark);
+}
+
+.game-choice:hover {
+  background: var(--pale);
+}
+
+#star {
+  font-size: 65px;
+  border: none;
+  background: transparent;
+  animation: float 2s infinite;
+}
+
+footer {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #bd8b9e;
+  margin-top: 55px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME SCREEN -->
+<section id="home" class="screen active hero">
+  <div class="eyebrow">A SPECIAL LITTLE PLACE ON THE INTERNET</div>
+  <div class="hero-icon">🌙</div>
+  <h1>A Little Universe<br>Called Us ♡</h1>
+  <p class="subtitle">Two years, a million little moments,<br>and a thousand more to come.</p>
+  <button class="primary" onclick="show('museum')">
+    Enter our universe ♡
+  </button>
+  <p style="font-size:12px">Made with love, just for you.</p>
+</section>
+
+<!-- MUSEUM -->
+<section id="museum" class="screen">
+  <div class="container">
+    <div class="eyebrow">CHAPTER ONE</div>
+    <h2>The Museum of Us ♡</h2>
+    <p class="subtitle">A collection of little things that mean everything.</p>
+
+    <div class="card">
+      <div class="illustration">💌</div>
+      <h3>Our Beginning</h3>
+      <p>Somehow, out of all the people in this world, our paths crossed. And I'm so glad they did.</p>
+      <p><em>Replace this with your story of how you met.</em></p>
+    </div>
+
+    <div class="card">
+      <div class="illustration">🧸</div>
+      <h3>Our Little Moments</h3>
+      <p>The random conversations, silly jokes, late-night talks and all those moments I wish I could relive.</p>
+      <p><em>Add one of your favourite memories here.</em></p>
+    </div>
+
+    <div class="card">
+      <div class="illustration">⭐</div>
+      <h3>My Favourite Thing About You</h3>
+      <p>It's not just one thing. It's the little details that make you, you. And I love all of them.</p>
+      <p><em>Add something you genuinely adore about him.</em></p>
+    </div>
+
+    <button class="primary" onclick="show('game')">Next: The Love Quest →</button>
+  </div>
+</section>
+
+<!-- GAME -->
+<section id="game" class="screen">
+  <div class="container">
+    <div class="eyebrow">CHAPTER TWO</div>
+    <h2>The Love Quest ✨</h2>
+    <p class="subtitle">Complete three little challenges to unlock your surprises.</p>
+
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <p id="status">Level 1 of 3</p>
+
+    <div class="card" id="level1">
+      <div class="illustration">🌟</div>
+      <h3>Level 1: Make a Wish</h3>
+      <p>Tap the magical star five times to make a wish for us.</p>
+      <button id="star" onclick="tapStar()">⭐</button>
+      <p id="starCount">Wishes collected: 0 / 5</p>
+    </div>
+
+    <div class="card" id="level2" style="display:none">
+      <div class="illustration">💗</div>
+      <h3>Level 2: A Little Question</h3>
+      <p>What makes our story so special?</p>
+      <button class="game-choice" onclick="answer(false)">The big milestones</button>
+      <button class="game-choice" onclick="answer(false)">The little moments</button>
+      <button class="game-choice" onclick="answer(true)">All of it, because it's ours ♡</button>
+      <p id="answerMessage"></p>
+    </div>
+
+    <div class="card" id="level3" style="display:none">
+      <div class="illustration">🌷</div>
+      <h3>Level 3: Choose Our Future</h3>
+      <p>What should our next chapters be filled with?</p>
+      <button class="game-choice" onclick="finishGame()">More memories, more adventures and more us ♡</button>
+      <p id="finalGameMessage"></p>
+    </div>
+
+    <div class="card" id="gameComplete" style="display:none">
+      <div class="illustration">🏆</div>
+      <h3>You completed the Love Quest!</h3>
+      <p>Congratulations, my favourite person. Your surprise awaits.</p>
+      <button class="primary" onclick="show('letters')">Unlock your letters ♡</button>
+    </div>
+  </div>
+</section>
+
+<!-- LETTERS -->
+<section id="letters" class="screen">
+  <div class="container">
+    <div class="eyebrow">CHAPTER THREE</div>
+    <h2>Letters From My Heart 💌</h2>
+    <p class="subtitle">Little letters for the moments when you need them.</p>
+
+    <div class="letter" onclick="toggleLetter(0)">
+      <div>♡ Open when you miss me ♡</div>
+      <div class="message" id="letter0">
+        I wish I could magically appear beside you right now. Until I can, imagine the biggest hug from me. Distance is just a little space between two people who care about each other. I love you.
+      </div>
+    </div>
+
+    <div class="letter" onclick="toggleLetter(1)">
+      <div>♡ Open when you're having a bad day ♡</div>
+      <div class="message" id="letter1">
+        Hey, breathe. You don't have to have everything figured out today. I'm proud of you, even on the days when you don't feel proud of yourself. You've got this, and I'm cheering for you.
+      </div>
+    </div>
+
+    <div class="letter" onclick="toggleLetter(2)">
+      <div>♡ Open when you can't sleep ♡</div>
+      <div class="message" id="letter2">
+        If I were there, I'd probably keep talking until we both fell asleep. For now, just close your eyes and imagine me holding your hand. Goodnight, my love.
+      </div>
+    </div>
+
+    <div class="letter" onclick="toggleLetter(3)">
+      <div>♡ Open on our next anniversary ♡</div>
+      <div class="message" id="letter3">
+        If you're reading this, we've made another trip around the sun together. I hope we have more memories, more laughter and more reasons to choose each other. Here's to us.
+      </div>
+    </div>
+
+    <button class="primary" onclick="show('final')">One last surprise →</button>
+  </div>
+</section>
+
+<!-- FINAL SURPRISE -->
+<section id="final" class="screen hero">
+  <div class="container">
+    <div class="eyebrow">THE FINAL CHAPTER</div>
+    <div class="hero-icon">🎀</div>
+    <h1>Two years.<br>Still my favourite story.</h1>
+    <p class="subtitle">And if I had to choose again,<br>I'd still choose you.</p>
+
+    <div class="card">
+      <h2>To my favourite human ♡</h2>
+      <p>
+        Happy second anniversary, my love.
+        Thank you for being part of my life,
+        for all the little moments we've shared
+        and for making these two years so special.
+      </p>
+      <p>
+        I can't wait for the day when distance
+        isn't part of our story anymore.
+        Until then, here's to loving you
+        through every screen, every call
+        and every little message.
+      </p>
+      <h2 style="color:#c87593">I love you. Always. ♡</h2>
+      <p><em>— Your favourite person</em></p>
+    </div>
+
+    <p class="subtitle">Our story is still being written...</p>
+    <div style="font-size:25px">♡ ✧ ♡ ✧ ♡</div>
+  </div>
+</section>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+let stars = 0;
+
+function tapStar() {
+  stars++;
+  document.getElementById('starCount').textContent =
+    `Wishes collected: ${stars} / 5`;
+
+  if (stars >= 5) {
+    document.getElementById('level1').style.display = 'none';
+    document.getElementById('level2').style.display = 'block';
+    document.getElementById('status').textContent = 'Level 2 of 3';
+    document.getElementById('bar').style.width = '33%';
+  }
+}
+
+function answer(correct) {
+  const msg = document.getElementById('answerMessage');
+
+  if (correct) {
+    msg.textContent = 'You got it! Every little thing matters because it is ours. ♡';
+    document.getElementById('level2').style.display = 'none';
+    document.getElementById('level3').style.display = 'block';
+    document.getElementById('status').textContent = 'Level 3 of 3';
+    document.getElementById('bar').style.width = '66%';
+  } else {
+    msg.textContent = 'Hehe, try again! Think about the whole story. ♡';
+  }
+}
+
+function finishGame() {
+  document.getElementById('level3').style.display = 'none';
+  document.getElementById('gameComplete').style.display = 'block';
+  document.getElementById('status').textContent = 'All levels completed!';
+  document.getElementById('bar').style.width = '100%';
+}
+
+function toggleLetter(number) {
+  document.getElementById('letter' + number).classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
