@@ -41,6 +41,16 @@ button {
 
 .screen.active { display: block; }
 
+#home.screen.active {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
 @keyframes appear {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
