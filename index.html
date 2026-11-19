@@ -49,16 +49,18 @@ button {
   min-height: 100vh;
   min-height: 100svh;
   width: 100%;
-  justify-content: center;
-} 
-  #home > * {
-  transform: translateY(100px);
-  }
 
-  {
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+
+  padding: 24px;
+}
+
+#home > * {
+  transform: none;
+  max-width: 100%;
 }
 
 @keyframes appear {
@@ -103,20 +105,26 @@ p {
 
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 20px;
+
+  padding: 24px;
   text-align: center;
   box-sizing: border-box;
 
   background-color: #F7DCE5;
   background-image:
-     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px),
-     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px);
+    radial-gradient(circle, #FFFFFF 4px, transparent 4.5px),
+    radial-gradient(circle, #FFFFFF 4px, transparent 4.5px);
+
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
+  background-attachment: fixed;
 
   color: #3D1E2E;
 }
