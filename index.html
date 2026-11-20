@@ -391,6 +391,103 @@ function show(id) {
     window.scrollTo(0, 0);
   }
 }
+  
+const bouquetLink = "PASTE_YOUR_DIGIBOUQUET_LINK_HERE";
+
+function openGift(type) {
+  const popup = document.getElementById("giftPopup");
+  const content = document.getElementById("giftContent");
+
+  popup.classList.add("active");
+
+  if (type === "letter") {
+    content.innerHTML = `
+      <h2>💌 A Letter For You</h2>
+      <p>
+        My favourite person, I wish I could put into
+        words how much you mean to me.
+        Every little moment with you is special,
+        and I hope you never forget how loved you are.
+        ♡
+      </p>
+    `;
+  }
+
+  if (type === "coupons") {
+    content.innerHTML = `
+      <h2>🎟️ Love Coupons</h2>
+      <p>Redeem these whenever you want!</p>
+      <p>♡ One virtual date night</p>
+      <p>♡ One unlimited hug</p>
+      <p>♡ One movie night</p>
+      <p>♡ One wish of your choice</p>
+      <p>♡ Unlimited I-love-yous</p>
+    `;
+  }
+
+  if (type === "bouquet") {
+    content.innerHTML = `
+      <div style="font-size:55px">💌</div>
+      <h2>Someone sent you flowers...</h2>
+      <p>A little bouquet for my favourite person.</p>
+      <button class="gift-action" onclick="openBouquet()">
+        Open your gift 🌷
+      </button>
+    `;
+  }
+
+  if (type === "riddles") {
+    content.innerHTML = `
+      <h2>🧩 Little Love Riddles</h2>
+      <p>What is my favourite place in the world?</p>
+
+      <button class="game-choice"
+        onclick="this.parentElement.querySelector('#riddleAnswer').textContent='Right beside you. ♡'">
+        Your arms
+      </button>
+
+      <button class="game-choice"
+        onclick="this.parentElement.querySelector('#riddleAnswer').textContent='Hehe, nice try! ♡'">
+        The moon
+      </button>
+
+      <p id="riddleAnswer"></p>
+    `;
+  }
+
+  if (type === "hearts") {
+    content.innerHTML = `
+      <h2>💗 Catch the Hearts!</h2>
+      <p>Catch as many hearts as you can in 15 seconds!</p>
+
+      <div id="heartScore">Score: 0</div>
+      <div id="heartGame"
+        style="height:180px;background:#ffeaf0;
+        border-radius:15px;position:relative;
+        overflow:hidden;margin:15px 0">
+      </div>
+
+      <button class="gift-action" onclick="startHearts()">
+        Start Game 💗
+      </button>
+    `;
+  }
+}
+
+function closeGift() {
+  document.getElementById("giftPopup")
+    .classList.remove("active");
+}
+
+function openBouquet() {
+  if (bouquetLink === "PASTE_YOUR_DIGIBOUQUET_LINK_HERE") {
+    alert("Add your bouquet link first! 🌷");
+    return;
+  }
+
+  window.open(bouquetLink, "_blank");
+}
+
 </script>
 
 </body>
