@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Anniversary, Love 💘</title>
-  
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500&family=Poppins:wght@300&family=DM+Sans:wght@400;500;600&display=swap');
 
@@ -14,10 +14,11 @@
   --rose: #c87593;
   --dark: #3D1E2E;
   --cream: #F7DCE5;
-  --pale: #fff0f4;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -36,6 +37,7 @@ button {
   display: none !important;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   padding: 20px;
   animation: appear .7s ease;
 }
@@ -45,27 +47,23 @@ button {
 }
 
 #home.screen.active {
-  display: flex;
-  min-height: 100vh;
-  min-height: 100svh;
-  width: 100%;
-
+  display: flex !important;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-
   padding: 24px;
 }
 
-#home > * {
-  transform: none;
-  max-width: 100%;
-}
-
 @keyframes appear {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1, h2, h3 {
@@ -77,28 +75,23 @@ h1 {
   font-size: clamp(46px, 9vw, 76px);
   font-weight: 400;
   font-style: italic;
-  color: #3D1E2E;
+  color: var(--dark);
   line-height: 1.2;
 }
 
-h2 { font-size: 38px; }
+h2 {
+  font-size: 38px;
+}
 
 p {
   line-height: 1.8;
-}
-
-.eyebrow {
-  letter-spacing: 4px;
-  font-size: 10px;
-  color: var(--rose);
 }
 
 .subtitle {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  font-style: normal;
-  color: #3D1E2E;
+  color: var(--dark);
   margin-top: 15px;
   letter-spacing: 0.3px;
 }
@@ -107,42 +100,20 @@ p {
   min-height: 100vh;
   min-height: 100svh;
   width: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   padding: 24px;
   text-align: center;
-  box-sizing: border-box;
-
-  background-color: #F7DCE5;
+  background-color: var(--cream);
   background-image:
     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px),
     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px);
-
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
   background-attachment: fixed;
-
-  color: #3D1E2E;
-}
-  
-.hero h1,
-.hero p,
-.hero .eyebrow {
-  color: #3D1E2E;
-}
-  
-.hero-icon {
-  font-size: 75px;
-  margin: 15px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  50% { transform: translateY(-12px) rotate(5deg); }
+  color: var(--dark);
 }
 
 .primary {
@@ -161,23 +132,6 @@ p {
   transform: translateY(-2px);
 }
 
-.secondary {
-  background: white;
-  color: var(--dark);
-  border: 1px solid #ebc6d4;
-  padding: 12px 22px;
-  border-radius: 25px;
-  margin: 6px;
-}
-
-.back {
-  display: block;
-  margin: 25px auto;
-  background: none;
-  border: none;
-  color: var(--rose);
-}
-
 .container {
   max-width: 750px;
   margin: auto;
@@ -193,78 +147,16 @@ p {
   box-shadow: 0 8px 25px #b77b8b0d;
 }
 
-.illustration {
-  font-size: 45px;
-  margin: 12px;
+.hero-icon {
+  font-size: 75px;
+  margin: 15px;
+  animation: float 3s ease-in-out infinite;
 }
 
-.letter {
-  background: #fff7f5;
-  border: 1px solid #e9c8d2;
-  padding: 22px;
-  border-radius: 15px;
-  margin: 12px auto;
-  max-width: 450px;
-  cursor: pointer;
-  transition: .2s;
-}
-
-.letter:hover { transform: scale(1.02); }
-
-.message {
-  display: none;
-  padding: 15px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 21px;
-  font-style: italic;
-}
-
-.message.open { display: block; }
-
-.progress {
-  height: 7px;
-  background: #f4e2e8;
-  border-radius: 10px;
-  max-width: 300px;
-  margin: 20px auto;
-  overflow: hidden;
-}
-
-.bar {
-  height: 100%;
-  width: 0%;
-  background: var(--rose);
-  transition: .5s;
-}
-
-.game-choice {
-  display: block;
-  width: 100%;
-  max-width: 350px;
-  margin: 10px auto;
-  padding: 14px;
-  border: 1px solid #e9c8d2;
-  border-radius: 14px;
-  background: white;
-  color: var(--dark);
-}
-
-.game-choice:hover {
-  background: var(--pale);
-}
-
-#star {
-  font-size: 65px;
-  border: none;
-  background: transparent;
-  animation: float 2s infinite;
-}
-
-footer {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: #bd8b9e;
-  margin-top: 55px;
+@keyframes float {
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
 }
 </style>
 </head>
@@ -273,39 +165,49 @@ footer {
 
 <!-- WELCOME SCREEN -->
 <section id="home" class="screen active hero">
-  
+
   <h1>Happy Anniversary, <br>Love 💘</h1>
 
   <p class="subtitle">
-    Cupid got us two years in a row 
+    Cupid got us two years in a row
   </p>
 
-  <button class="primary" onclick="show('museum')">
-    Next <3
+  <button class="primary" onclick="show('final')">
+    Next &lt;3
   </button>
 
-  <p style="font-size:12px">Made with love, just for you.</p>
+  <p style="font-size:12px">
+    Made with love, just for you.
+  </p>
 
 </section>
 
 
-
 <!-- FINAL SURPRISE -->
 <section id="final" class="screen hero">
+
   <div class="container">
-    <div class="eyebrow">THE FINAL CHAPTER</div>
+
     <div class="hero-icon">🎀</div>
+
     <h1>Two years.<br>Still my favourite story.</h1>
-    <p class="subtitle">And if I had to choose again,<br>I'd still choose you.</p>
+
+    <p class="subtitle">
+      And if I had to choose again,<br>
+      I'd still choose you.
+    </p>
 
     <div class="card">
+
       <h2>To my favourite human ♡</h2>
+
       <p>
         Happy second anniversary, my love.
         Thank you for being part of my life,
         for all the little moments we've shared
         and for making these two years so special.
       </p>
+
       <p>
         I can't wait for the day when distance
         isn't part of our story anymore.
@@ -313,14 +215,27 @@ footer {
         through every screen, every call
         and every little message.
       </p>
-      <h2 style="color:#c87593">I love you. Always. ♡</h2>
+
+      <h2 style="color:#c87593">
+        I love you. Always. ♡
+      </h2>
+
       <p><em>— Your favourite person</em></p>
+
     </div>
 
-    <p class="subtitle">Our story is still being written...</p>
-    <div style="font-size:25px">♡ ✧ ♡ ✧ ♡</div>
+    <p class="subtitle">
+      Our story is still being written...
+    </p>
+
+    <div style="font-size:25px">
+      ♡ ✧ ♡ ✧ ♡
+    </div>
+
   </div>
+
 </section>
+
 
 <script>
 function show(id) {
@@ -334,46 +249,6 @@ function show(id) {
     nextScreen.classList.add('active');
     window.scrollTo(0, 0);
   }
-}
-
-let stars = 0;
-
-function tapStar() {
-  stars++;
-  document.getElementById('starCount').textContent =
-    `Wishes collected: ${stars} / 5`;
-
-  if (stars >= 5) {
-    document.getElementById('level1').style.display = 'none';
-    document.getElementById('level2').style.display = 'block';
-    document.getElementById('status').textContent = 'Level 2 of 3';
-    document.getElementById('bar').style.width = '33%';
-  }
-}
-
-function answer(correct) {
-  const msg = document.getElementById('answerMessage');
-
-  if (correct) {
-    msg.textContent = 'You got it! Every little thing matters because it is ours. ♡';
-    document.getElementById('level2').style.display = 'none';
-    document.getElementById('level3').style.display = 'block';
-    document.getElementById('status').textContent = 'Level 3 of 3';
-    document.getElementById('bar').style.width = '66%';
-  } else {
-    msg.textContent = 'Hehe, try again! Think about the whole story. ♡';
-  }
-}
-
-function finishGame() {
-  document.getElementById('level3').style.display = 'none';
-  document.getElementById('gameComplete').style.display = 'block';
-  document.getElementById('status').textContent = 'All levels completed!';
-  document.getElementById('bar').style.width = '100%';
-}
-
-function toggleLetter(number) {
-  document.getElementById('letter' + number).classList.toggle('open');
 }
 </script>
 
