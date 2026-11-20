@@ -158,6 +158,103 @@ p {
     transform: translateY(-12px) rotate(5deg);
   }
 }
+  
+/* GIFT BOX */
+
+.gift-box {
+  max-width: 430px;
+  min-height: 340px;
+  margin: 35px auto;
+  padding: 30px 20px;
+  background: #c87593;
+  border: 8px solid #e9aabe;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px #8d536333;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  position: relative;
+}
+
+.gift-item {
+  background: #fff7f5;
+  border: 2px solid #f2d2dc;
+  border-radius: 16px;
+  padding: 18px 8px;
+  font-size: 38px;
+  cursor: pointer;
+  transition: .25s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gift-item span {
+  font-size: 12px;
+  color: #3D1E2E;
+}
+
+.gift-item:hover {
+  transform: translateY(-5px) rotate(-2deg);
+  background: #ffeaf0;
+}
+
+.gift-popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #3d1e2ecc;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+}
+
+.gift-popup.active {
+  display: flex;
+}
+
+.gift-content {
+  background: #fff7f5;
+  border-radius: 22px;
+  padding: 30px 22px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: appear .4s ease;
+}
+
+.close-gift {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  border: none;
+  background: none;
+  color: #c87593;
+  font-size: 28px;
+}
+
+.gift-content h2 {
+  color: #c87593;
+}
+
+.gift-content p {
+  line-height: 1.8;
+}
+
+.gift-action {
+  background: #c87593;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 22px;
+  margin: 10px;
+}
+
 </style>
 </head>
 
@@ -275,11 +372,11 @@ p {
       <h2 style="color:#c87593">
         I love you. Always <3
       </h2>
+            <p><em>— H</em></p>
 
-      <p><em>— H</em></p>
+  </div>
 
 </section>
-
 
 <script>
 function show(id) {
