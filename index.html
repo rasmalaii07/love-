@@ -158,22 +158,168 @@ p {
     transform: translateY(-12px) rotate(5deg);
   }
 }
-  
-/* GIFT BOX */
+
+/* REALISTIC TOP-DOWN GIFT BOX */
 
 .gift-box {
-  max-width: 430px;
-  min-height: 340px;
-  margin: 35px auto;
-  padding: 30px 20px;
-  background: #c87593;
-  border: 8px solid #e9aabe;
-  border-radius: 22px;
-  box-shadow: 0 12px 30px #8d536333;
+  width: 100%;
+  max-width: 440px;
+  min-height: 410px;
+  margin: 40px auto;
+  padding: 65px 22px 25px;
+
+  background:
+    radial-gradient(circle, #ffffff55 2px, transparent 3px),
+    linear-gradient(145deg, #f9cbd9, #e9a8be);
+
+  background-size: 22px 22px, auto;
+
+  border: 12px solid #d98ca7;
+  border-radius: 25px;
+
+  box-shadow:
+    inset 0 0 0 5px #fce3eb,
+    inset 0 0 20px #a95c7840,
+    0 15px 30px #8d536344;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 20px;
+
   position: relative;
+  overflow: hidden;
+}
+
+/* SATIN RIBBON */
+
+.gift-box::before {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    #d88ba5,
+    #ffe1eb,
+    #d88ba5
+  );
+  opacity: .85;
+  z-index: 0;
+}
+
+.gift-box::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 35px;
+  left: 0;
+  top: 48%;
+  background: linear-gradient(
+    180deg,
+    #d88ba5,
+    #ffe1eb,
+    #d88ba5
+  );
+  opacity: .8;
+  z-index: 0;
+}
+
+/* BIG BOW */
+
+.gift-bow {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 65px;
+  z-index: 5;
+  filter: drop-shadow(0 5px 4px #8d536355);
+  animation: bowFloat 3s ease-in-out infinite;
+}
+
+@keyframes bowFloat {
+  50% {
+    transform: translateX(-50%) translateY(-5px) rotate(4deg);
+  }
+}
+
+/* LITTLE PRESENTS */
+
+.gift-item {
+  position: relative;
+  z-index: 2;
+
+  min-height: 115px;
+  background: linear-gradient(145deg, #fffafa, #ffe5ed);
+
+  border: 2px solid #e9b6c7;
+  border-radius: 15px;
+
+  box-shadow:
+    0 5px 10px #783c5425,
+    inset 0 0 12px #ffffff;
+
+  padding: 16px 8px;
+
+  font-size: 39px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  cursor: pointer;
+
+  transition: transform .3s, box-shadow .3s;
+}
+
+.gift-item:nth-child(2) {
+  transform: rotate(-5deg);
+}
+
+.gift-item:nth-child(3) {
+  transform: rotate(4deg);
+}
+
+.gift-item:nth-child(4) {
+  transform: rotate(3deg);
+}
+
+.gift-item:nth-child(5) {
+  transform: rotate(-4deg);
+}
+
+.gift-item:nth-child(6) {
+  transform: rotate(5deg);
+}
+
+.gift-item:hover {
+  transform: translateY(-9px) rotate(0deg) scale(1.05);
+  box-shadow: 0 12px 18px #783c5435;
+}
+
+.gift-item span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #633347;
+}
+
+/* MOBILE */
+
+@media (max-width: 400px) {
+  .gift-box {
+    padding: 60px 14px 20px;
+    gap: 14px;
+  }
+
+  .gift-item {
+    min-height: 105px;
+    font-size: 33px;
+  }
 }
 
 .gift-item {
@@ -291,7 +437,9 @@ p {
 
     <div class="gift-box">
 
-      <div class="gift-item" onclick="openGift('letter')">
+  <div class="gift-bow">🎀</div>
+
+  <div class="gift-item" onclick="openGift('letter')">
         💌
         <span>Love Letter</span>
       </div>
