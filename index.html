@@ -480,12 +480,9 @@ function closeGift() {
 }
 
 function openBouquet() {
-  if (bouquetLink === "PASTE_YOUR_DIGIBOUQUET_LINK_HERE") {
-    alert("Add your bouquet link first! 🌷");
-    return;
-  }
+  window.open(bouquetLink, "_blank");
+}
 
-  
 let heartScore = 0;
 let heartTimer = null;
 let heartSpawner = null;
