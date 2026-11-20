@@ -482,7 +482,7 @@ function closeGift() {
 function openBouquet() {
   window.open(bouquetLink, "_blank");
 }
-
+  
 let heartScore = 0;
 let heartTimer = null;
 let heartSpawner = null;
@@ -491,12 +491,13 @@ let heartRunning = false;
 function startHearts() {
   if (heartRunning) return;
 
-  heartRunning = true;
-  heartScore = 0;
-
   const area = document.getElementById("heartGame");
   const score = document.getElementById("heartScore");
 
+  if (!area || !score) return;
+
+  heartRunning = true;
+  heartScore = 0;
   area.innerHTML = "";
   score.textContent = "Score: 0";
 
@@ -504,19 +505,20 @@ function startHearts() {
     if (!heartRunning) return;
 
     const heart = document.createElement("button");
-
     heart.textContent = "💗";
+
     heart.style.cssText = `
-      position:absolute;
-      font-size:28px;
-      border:none;
-      background:transparent;
-      cursor:pointer;
-      left:${Math.random() * 85}%;
-      top:${Math.random() * 75}%;
+      position: absolute;
+      left: ${Math.random() * 85}%;
+      top: ${Math.random() * 75}%;
+      font-size: 30px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
     `;
 
-    heart.onclick = () => {
+    heart.onclick = function() {
+      if (!heartRunning) return;
       heartScore++;
       score.textContent = "Score: " + heartScore;
       heart.remove();
@@ -524,9 +526,10 @@ function startHearts() {
 
     area.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 1000);
+    setTimeout(() => heart.remove(), 1800);
   }
 
+  spawnHeart();
   heartSpawner = setInterval(spawnHeart, 650);
 
   heartTimer = setTimeout(() => {
@@ -534,16 +537,14 @@ function startHearts() {
     clearInterval(heartSpawner);
 
     area.innerHTML = `
-      <h3 style="padding-top:35px">
-        You caught ${heartScore} hearts! 💗
-      </h3>
-      <p>Every single one belongs to you ♡</p>
+      <h3>Time's up! 💗</h3>
+      <h2>You caught ${heartScore} hearts!</h2>
+      <p>Every little heart belongs to you ♡</p>
+      <button class="gift-action" onclick="startHearts()">
+        Play Again 💕
+      </button>
     `;
-
   }, 15000);
-}
-  
-  window.open(bouquetLink, "_blank");
 }
 
 </script>
