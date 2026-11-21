@@ -449,6 +449,47 @@ p {
   perspective: 1000px;
   transform-style: preserve-3d;
 }
+  
+/* RIBBON WRAPPED AROUND THE PRESENT */
+
+.package-ribbon {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* RIBBON DOWN THE FRONT */
+
+.package-ribbon.vertical {
+  width: 35px;
+  height: 190px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    #bd718b,
+    #ffe8ee 45%,
+    #d58da5
+  );
+  box-shadow: 0 0 5px #63334755;
+}
+
+/* RIBBON ACROSS THE FRONT */
+
+.package-ribbon.horizontal {
+  width: 100%;
+  height: 28px;
+  left: 0;
+  top: 65%;
+  background: linear-gradient(
+    180deg,
+    #bd718b,
+    #ffe8ee 45%,
+    #d58da5
+  );
+  box-shadow: 0 0 5px #63334755;
+}
 
 /* BOX BODY */
 
@@ -576,6 +617,123 @@ p {
   z-index: 10;
 
   transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+  
+/* REAL SATIN BOW */
+
+.package-bow {
+  position: absolute;
+  width: 150px;
+  height: 105px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12;
+  pointer-events: none;
+  transition: transform .65s ease;
+}
+
+/* TWO BOW LOOPS */
+
+.bow-loop {
+  position: absolute;
+  width: 65px;
+  height: 43px;
+  top: 12px;
+  background: linear-gradient(
+    145deg,
+    #fff0f4 0%,
+    #e9a4b8 35%,
+    #bd6c89 70%,
+    #f5c6d5 100%
+  );
+  border: 2px solid #bd7891;
+  box-shadow: inset 0 3px 8px #ffffff99,
+              0 5px 8px #693b4b35;
+}
+
+.bow-loop.left {
+  left: 10px;
+  border-radius: 70% 20% 65% 35%;
+  transform: rotate(25deg);
+}
+
+.bow-loop.right {
+  right: 10px;
+  border-radius: 20% 70% 35% 65%;
+  transform: rotate(-25deg);
+}
+
+/* CENTRE KNOT */
+
+.bow-knot {
+  position: absolute;
+  width: 28px;
+  height: 25px;
+  left: 50%;
+  top: 23px;
+  transform: translateX(-50%);
+  border-radius: 40%;
+  background: linear-gradient(
+    135deg,
+    #ffe6ed,
+    #d78ca6 55%,
+    #a95877
+  );
+  border: 2px solid #b96d87;
+  box-shadow: 0 3px 6px #693b4b55;
+  z-index: 3;
+}
+
+/* HANGING RIBBON TAILS */
+
+.bow-tail {
+  position: absolute;
+  width: 24px;
+  height: 58px;
+  top: 42px;
+  background: linear-gradient(
+    90deg,
+    #b96783,
+    #ffe3eb,
+    #c87593
+  );
+  border: 1px solid #b96d87;
+  box-shadow: 0 4px 7px #693b4b35;
+}
+
+.bow-tail.left {
+  left: 43px;
+  transform: rotate(17deg);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+.bow-tail.right {
+  right: 43px;
+  transform: rotate(-17deg);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+/* BOW OPENS */
+
+.package-stage.open .package-bow {
+  transform: translate(-50%, -50%) translateY(-110px) scale(.65);
+}
+
+.package-stage.open .bow-loop.left {
+  transform: translateX(-35px) rotate(-35deg);
+}
+
+.package-stage.open .bow-loop.right {
+  transform: translateX(35px) rotate(35deg);
+}
+
+.package-stage.open .bow-tail.left {
+  transform: translate(-15px, 20px) rotate(35deg);
+}
+
+.package-stage.open .bow-tail.right {
+  transform: translate(15px, 20px) rotate(-35deg);
 }
 
 /* LID SLIDES AWAY - NO FADING */
@@ -712,6 +870,8 @@ p {
       <!-- BOX BASE -->
 
       <div class="package-base">
+      <div class="package-ribbon vertical"></div>
+      <div class="package-ribbon horizontal"></div>
 
         <!-- GIFTS INSIDE -->
 
@@ -752,12 +912,27 @@ p {
       </div>
 
       <!-- CLICKABLE LID -->
+      
+<div
+  class="package-lid"
+  onclick="openPackage()"
+  title="Open your package">
 
-      <div
-        class="package-lid"
-        onclick="openPackage()"
-        title="Open your package">
-      </div>
+  <div class="package-bow">
+
+    <div class="bow-loop left"></div>
+
+    <div class="bow-loop right"></div>
+
+    <div class="bow-knot"></div>
+
+    <div class="bow-tail left"></div>
+
+    <div class="bow-tail right"></div>
+
+  </div>
+
+</div>
 
     </div>
 
