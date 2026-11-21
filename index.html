@@ -872,32 +872,30 @@ function openGift(type) {
 
   if (type === "letter") {
     content.innerHTML = `
-      <h2>💌 A Letter For You</h2>
+      <h2>A Letter For You</h2>
       <p>
         My favourite person, I wish I could put into
         words how much you mean to me.
         Every little moment with you is special,
         and I hope you never forget how loved you are.
-        ♡
       </p>
     `;
   }
 
   if (type === "coupons") {
     content.innerHTML = `
-      <h2>🎟️ Love Coupons</h2>
-      <p>Redeem these whenever you want!</p>
-      <p>♡ One virtual date night</p>
-      <p>♡ One unlimited hug</p>
-      <p>♡ One movie night</p>
-      <p>♡ One wish of your choice</p>
-      <p>♡ Unlimited I-love-yous</p>
+      <h2>Some Coupons</h2>
+      <p>Redeem these whenever you want !</p>
+      <p>One virtual date night</p>
+      <p>One unlimited fun</p>
+      <p>One movie night</p>
+      <p>One wish of your choice</p>
+      <p>Unlimited I love you's</p>
     `;
   }
 
   if (type === "bouquet") {
     content.innerHTML = `
-      <div style="font-size:55px">💌</div>
       <h2>Someone sent you flowers...</h2>
       <p>A little bouquet for my favourite person.</p>
       <button class="gift-action" onclick="openBouquet()">
@@ -908,7 +906,7 @@ function openGift(type) {
 
   if (type === "riddles") {
     content.innerHTML = `
-      <h2>🧩 Little Love Riddles</h2>
+      <h2>A question..?</h2>
       <p>What is my favourite place in the world?</p>
 
       <button class="game-choice"
@@ -927,7 +925,7 @@ function openGift(type) {
 
   if (type === "hearts") {
     content.innerHTML = `
-      <h2>💗 Catch the Hearts!</h2>
+      <h2>Catch the Hearts 💕</h2>
       <p>Catch as many hearts as you can in 15 seconds!</p>
 
       <div id="heartScore">Score: 0</div>
@@ -1007,9 +1005,9 @@ function startHearts() {
     clearInterval(heartSpawner);
 
     area.innerHTML = `
-      <h3>Time's up! 💗</h3>
+      <h3>Time's up!</h3>
       <h2>You caught ${heartScore} hearts!</h2>
-      <p>Every little heart belongs to you ♡</p>
+      <p>Every little heart belongs to you 🤍</p>
       <button class="gift-action" onclick="startHearts()">
         Play Again 💕
       </button>
