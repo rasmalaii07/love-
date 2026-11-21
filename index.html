@@ -400,6 +400,192 @@ p {
   padding: 12px 22px;
   margin: 10px;
 }
+  
+/* NEW MIDDLE PAGE - PACKAGE DESIGN */
+
+.package-screen {
+  background:
+    linear-gradient(rgba(24, 35, 22, .25), rgba(24, 35, 22, .45)),
+    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1800")
+    center/cover no-repeat;
+  min-height: 100svh;
+  padding: 35px 22px;
+  color: #3d1e2e;
+}
+
+.package-screen .container {
+  max-width: 1050px;
+}
+
+.package-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 65px);
+  font-weight: 400;
+  font-style: italic;
+  color: #3d1e2e;
+  text-shadow: 0 2px 12px #ffffff80;
+  margin: 15px 0 35px;
+}
+
+.package-subtitle {
+  color: #3d1e2e;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+.package-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 35px;
+  align-items: center;
+  max-width: 850px;
+  margin: auto;
+}
+
+/* WRAPPED PRESENT */
+
+.wrapped-present {
+  position: relative;
+  height: 245px;
+  max-width: 245px;
+  width: 100%;
+  margin: auto;
+  background: linear-gradient(135deg, #f6d1ad, #dba982);
+  border-radius: 5px;
+  box-shadow: 0 15px 30px #0005;
+  border: 2px solid #d3a17d;
+}
+
+.wrapped-present::before {
+  content: "";
+  position: absolute;
+  width: 38px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ad7659, #f5d0ae, #ad7659);
+}
+
+.wrapped-present::after {
+  content: "";
+  position: absolute;
+  height: 35px;
+  width: 100%;
+  top: 42%;
+  background: linear-gradient(#ad7659, #f5d0ae, #ad7659);
+}
+
+.present-bow {
+  position: absolute;
+  z-index: 2;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 65px;
+  filter: drop-shadow(0 3px 3px #71452c66);
+}
+
+.present-label {
+  position: absolute;
+  z-index: 3;
+  bottom: 12px;
+  width: 100%;
+  color: #633f30;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+}
+
+/* OPEN MEMORY BOX */
+
+.open-package {
+  position: relative;
+  background: linear-gradient(145deg, #a56b48, #71432d);
+  padding: 18px;
+  border: 7px solid #71432d;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px #0006;
+}
+
+.package-inner {
+  background: #d6b18c;
+  padding: 15px;
+  border: 3px solid #b88a62;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  position: relative;
+}
+
+.package-item {
+  min-height: 100px;
+  background: linear-gradient(145deg, #fff5e9, #f3d9c6);
+  border: 1px solid #d4a88d;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 5px;
+  cursor: pointer;
+  color: #633b32;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  transition: .3s;
+  box-shadow: 0 4px 8px #583b2925;
+}
+
+.package-item span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.package-item:hover {
+  transform: translateY(-5px) scale(1.04);
+  background: #fff;
+  box-shadow: 0 8px 15px #583b2940;
+}
+
+.package-item:last-child {
+  grid-column: 1 / -1;
+  min-height: 75px;
+}
+
+.package-instruction {
+  display: inline-block;
+  background: #fff0d7;
+  color: #53392b;
+  border-radius: 25px;
+  padding: 10px 22px;
+  margin: 22px auto 0;
+  font-size: 13px;
+  box-shadow: 0 4px 12px #0002;
+}
+
+@media (max-width: 650px) {
+  .package-screen {
+    padding: 35px 18px;
+  }
+
+  .package-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 380px;
+  }
+
+  .wrapped-present {
+    height: 170px;
+    max-width: 170px;
+  }
+
+  .present-bow {
+    font-size: 52px;
+  }
+
+  .package-item {
+    min-height: 90px;
+  }
+}
 
 </style>
 </head>
@@ -426,45 +612,80 @@ p {
 </section>
   
 <!-- MIDDLE PAGE: THE GIFT BOX -->
-<section id="gifts" class="screen hero">
+
+<!-- MIDDLE PAGE: THE PACKAGE -->
+
+<section id="gifts" class="screen hero package-screen">
 
   <div class="container">
 
-    <h2>A Little Box of Love 🎀</h2>
-    <p class="subtitle">
-      I collected a few little surprises just for you.
+    <h1 class="package-title">You've a package</h1>
+
+    <p class="package-subtitle">
+      A little collection of things made with love ♡
     </p>
 
-    <div class="gift-box">
+    <div class="package-layout">
 
-  <div class="gift-bow">🎀</div>
+      <!-- CLOSED GIFT BOX -->
 
-  <div class="gift-item" onclick="openGift('letter')">
-        💌
-        <span>Love Letter</span>
+      <div class="wrapped-present">
+
+        <div class="present-bow">🎀</div>
+
+        <div class="present-label">
+          For my favourite person ♡
+        </div>
+
       </div>
 
-      <div class="gift-item" onclick="openGift('coupons')">
-        🎟️
-        <span>Love Coupons</span>
-      </div>
+      <!-- OPEN MEMORY BOX -->
 
-      <div class="gift-item" onclick="openGift('bouquet')">
-        🌷
-        <span>Your Flowers</span>
-      </div>
+      <div class="open-package">
 
-      <div class="gift-item" onclick="openGift('riddles')">
-        🧩
-        <span>Love Riddles</span>
-      </div>
+        <div class="package-inner">
 
-      <div class="gift-item" onclick="openGift('hearts')">
-        💗
-        <span>Catch Hearts</span>
+          <button class="package-item"
+            onclick="openGift('letter')">
+            💌
+            <span>Love Letter</span>
+          </button>
+
+          <button class="package-item"
+            onclick="openGift('coupons')">
+            🎟️
+            <span>Love Coupons</span>
+          </button>
+
+          <button class="package-item"
+            onclick="openGift('bouquet')">
+            🌷
+            <span>Your Flowers</span>
+          </button>
+
+          <button class="package-item"
+            onclick="openGift('riddles')">
+            🧩
+            <span>Love Riddles</span>
+          </button>
+
+          <button class="package-item"
+            onclick="openGift('hearts')">
+            💗
+            <span>Catch Hearts</span>
+          </button>
+
+        </div>
+
       </div>
 
     </div>
+
+    <div class="package-instruction">
+      Click items to open ♡
+    </div>
+
+    <br>
 
     <button class="primary" onclick="show('final')">
       One last surprise ♡
