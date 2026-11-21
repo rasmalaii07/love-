@@ -736,7 +736,37 @@ p {
   transform: translate(15px, 20px) rotate(-35deg);
 }
 
-/* LID SLIDES AWAY - NO FADING */
+/* OPENING SEQUENCE */
+
+.package-lid {
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.package-bow {
+  transition: transform .65s ease;
+}
+
+.package-stage.open .package-bow {
+  transform: translate(-50%, -50%) translateY(-110px) scale(.65);
+}
+
+.package-stage.open .bow-loop.left {
+  transform: translateX(-35px) rotate(-35deg);
+}
+
+.package-stage.open .bow-loop.right {
+  transform: translateX(35px) rotate(35deg);
+}
+
+.package-stage.open .bow-tail.left {
+  transform: translate(-15px, 20px) rotate(35deg);
+}
+
+.package-stage.open .bow-tail.right {
+  transform: translate(15px, 20px) rotate(-35deg);
+}
+
+/* LID SLIDES AWAY - NEVER FADES */
 
 .package-stage.open .package-lid {
   transform:
@@ -744,10 +774,21 @@ p {
     translateY(-85px)
     translateZ(90px)
     rotateZ(12deg);
-
   opacity: 1;
   pointer-events: none;
 }
+
+/* REVEAL THE GIFTS */
+
+.package-stage.open .package-inside {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.package-stage.open .package-base {
+  transform: translateX(-50%) translateY(20px);
+}
+
 
 /* REVEAL GIFTS */
 
@@ -849,8 +890,7 @@ p {
 </section>
   
 <!-- MIDDLE PAGE: THE GIFT --!>
-
-
+  
 <!-- 3D PACKAGE MIDDLE PAGE -->
 
 <section id="gifts" class="screen hero package-screen">
@@ -1174,7 +1214,6 @@ function startHearts() {
 // OPEN THE 3D PACKAGE
 
 function openPackage() {
-
   const packageBox =
     document.getElementById("packageStage");
 
@@ -1186,10 +1225,16 @@ function openPackage() {
     return;
   }
 
+  instruction.textContent = "Unwrapping something special... ♡";
+
+  // First, loosen the bow
   packageBox.classList.add("open");
 
-  instruction.textContent =
-    "Your little surprises are waiting... Click to open ♡";
+  // Update the message after the lid moves
+  setTimeout(() => {
+    instruction.textContent =
+      "A little surprise, just for you! ♡";
+  }, 1300);
 }
 
 </script>
