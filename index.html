@@ -401,11 +401,9 @@ p {
   margin: 10px;
 }
   
-/* NEW MIDDLE PAGE - PACKAGE DESIGN */
-
-/* =================================
-   3D ANNIVERSARY GIFT PACKAGE
-================================= */
+/* =====================================
+   REALISTIC 3D PRESENT BOX
+===================================== */
 
 .package-screen {
   background: var(--cream);
@@ -430,87 +428,109 @@ p {
   font-size: clamp(40px, 7vw, 65px);
   font-style: italic;
   font-weight: 400;
-  color: #3D1E2E;
+  color: var(--dark);
   margin-bottom: 8px;
 }
 
 .package-subtitle {
-  color: #3D1E2E;
+  color: var(--dark);
   font-size: 15px;
   margin-bottom: 25px;
 }
 
-/* 3D PACKAGE STAGE */
+/* 3D SCENE */
 
 .package-stage {
   width: 100%;
   max-width: 570px;
-  height: 370px;
-  margin: 25px auto;
+  height: 390px;
+  margin: 20px auto;
   position: relative;
-  perspective: 1100px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-/* BOX BASE */
+/* BOX BODY */
 
 .package-base {
   position: absolute;
-  width: 310px;
-  height: 220px;
+  width: 320px;
+  height: 190px;
   left: 50%;
-  top: 95px;
+  top: 125px;
   transform: translateX(-50%);
   transform-style: preserve-3d;
 
-  background: linear-gradient(145deg, #c78d67, #956044);
-  border: 5px solid #9d694a;
-  border-radius: 8px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 45%,
+      #d99caf 46%,
+      #ffe4eb 50%,
+      #d99caf 54%,
+      transparent 55%
+    ),
+    linear-gradient(145deg, #f5c8d5, #d98da8);
+
+  border: 3px solid #c77f99;
+  border-radius: 5px;
 
   box-shadow:
-    0 25px 35px #0005,
-    inset 0 0 20px #613d2b55;
-
-  transition: .7s;
+    0 25px 35px #693b4b35,
+    inset 0 0 20px #ffffff55;
 }
 
-/* FRONT WALL */
+/* FRONT SIDE */
 
 .package-base::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 35px;
-  bottom: -35px;
-  left: -5px;
-  background: linear-gradient(#9d694a, #71452f);
-  border: 5px solid #805139;
-  transform: rotateX(-90deg);
+  height: 45px;
+  left: -3px;
+  bottom: -48px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 45%,
+      #c77f99 46%,
+      #f9dce5 50%,
+      #c77f99 54%,
+      transparent 55%
+    ),
+    linear-gradient(#d98da8, #b96e88);
+
+  border: 3px solid #bd7790;
+  transform: rotateX(-65deg);
   transform-origin: top;
 }
 
-/* RIGHT WALL */
+/* RIGHT SIDE */
 
 .package-base::after {
   content: "";
   position: absolute;
-  width: 35px;
+  width: 45px;
   height: 100%;
-  right: -35px;
-  top: -5px;
-  background: linear-gradient(90deg, #805139, #583724);
-  border: 5px solid #805139;
-  transform: rotateY(90deg);
+  right: -48px;
+  top: -3px;
+
+  background: linear-gradient(90deg, #c77f99, #a95f79);
+  border: 3px solid #a95f79;
+
+  transform: rotateY(65deg);
   transform-origin: left;
 }
 
-/* INSIDE OF THE BOX */
+/* BOX INTERIOR */
 
 .package-inside {
   position: absolute;
   inset: 12px;
-  background: linear-gradient(145deg, #e9c7a7, #b98662);
-  border: 3px solid #a47755;
-  border-radius: 4px;
+
+  background: linear-gradient(145deg, #f8dce4, #dca1b4);
+  border: 3px solid #bd8195;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -518,109 +538,75 @@ p {
   padding: 12px;
 
   opacity: 0;
-  transform: translateY(15px) scale(.8);
-  transition: .6s .4s;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .6s ease;
 }
 
-/* GIFT BOX LID */
+/* LID */
 
 .package-lid {
   position: absolute;
-  width: 320px;
-  height: 230px;
+  width: 330px;
+  height: 205px;
   left: 50%;
-  top: 85px;
+  top: 110px;
 
-  transform: translateX(-50%) translateZ(18px);
-  transform-origin: left center;
+  transform: translateX(-50%) translateZ(25px);
+  transform-origin: center center;
 
   background:
     linear-gradient(
       90deg,
-      transparent 46%,
-      #c18a68 47%,
-      #f1d1b3 50%,
-      #c18a68 53%,
-      transparent 54%
+      transparent 44%,
+      #c77f99 45%,
+      #ffe4eb 50%,
+      #c77f99 55%,
+      transparent 56%
     ),
-    linear-gradient(180deg, #f1cba9, #d9a783);
+    linear-gradient(145deg, #ffe1e9, #e5a9bc);
 
-  border: 6px solid #b67d5b;
-  border-radius: 9px;
+  border: 5px solid #c77f99;
+  border-radius: 7px;
 
   box-shadow:
-    0 10px 20px #0004,
-    inset 0 0 12px #fff6;
+    0 12px 20px #693b4b45,
+    inset 0 0 12px #ffffff88;
 
   cursor: pointer;
-  z-index: 5;
+  z-index: 10;
 
-  transition:
-    transform 1.15s cubic-bezier(.68,-.2,.25,1.2),
-    opacity .5s;
+  transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
 }
 
-/* SATIN BOW */
-
-.package-lid::after {
-  content: "🎀";
-  position: absolute;
-  font-size: 65px;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 5px 4px #603c2b66);
-}
-
-/* LID RIBBON */
-
-.package-lid::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    90deg,
-    #986348,
-    #f2d4b8,
-    #986348
-  );
-}
-
-/* OPENING ANIMATION */
+/* LID SLIDES AWAY - NO FADING */
 
 .package-stage.open .package-lid {
   transform:
-    translateX(-135%)
-    translateY(-35px)
-    rotateZ(-12deg)
-    rotateY(-18deg);
+    translateX(125px)
+    translateY(-85px)
+    translateZ(90px)
+    rotateZ(12deg);
 
-  opacity: .3;
+  opacity: 1;
   pointer-events: none;
 }
 
+/* REVEAL GIFTS */
+
 .package-stage.open .package-inside {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-.package-stage.open .package-base {
-  transform: translateX(-50%) translateY(20px);
-}
-
-/* GIFTS INSIDE */
+/* GIFTS */
 
 .package-gift {
-  border: 2px solid #c79a7c;
-  border-radius: 8px;
-
-  background: linear-gradient(145deg, #fff7ed, #eac9ae);
+  border: 2px solid #d4a0b1;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #fff9fa, #f5dce4);
 
   box-shadow:
-    0 5px 8px #583b2935,
+    0 5px 8px #583b2925,
     inset 0 0 10px white;
 
   min-width: 0;
@@ -641,12 +627,12 @@ p {
 .package-gift span {
   font-size: 10px;
   font-weight: 600;
-  color: #633e31;
+  color: #633347;
 }
 
 .package-gift:hover {
-  transform: translateY(-8px) rotateY(10deg);
-  box-shadow: 0 12px 15px #583b2955;
+  transform: translateY(-7px);
+  box-shadow: 0 12px 15px #583b2940;
 }
 
 .package-gift:last-child {
@@ -658,26 +644,21 @@ p {
 .package-instruction {
   display: inline-block;
   padding: 11px 24px;
-  background: #fff0d7;
-  color: #54392e;
+  background: #fff0f4;
+  color: var(--dark);
   border-radius: 30px;
   font-size: 13px;
-  box-shadow: 0 4px 12px #0002;
   margin-top: 5px;
+  box-shadow: 0 4px 12px #0001;
 }
 
 /* MOBILE */
 
 @media(max-width: 500px) {
   .package-stage {
-    height: 330px;
     transform: scale(.85);
     transform-origin: top center;
-    margin-bottom: -35px;
-  }
-
-  .package-screen {
-    padding: 35px 12px;
+    margin-bottom: -45px;
   }
 
   .package-title {
