@@ -403,9 +403,12 @@ p {
   
 /* NEW MIDDLE PAGE - PACKAGE DESIGN */
 
+/* =================================
+   3D ANNIVERSARY GIFT PACKAGE
+================================= */
+
 .package-screen {
   background: var(--cream);
-
   min-height: 100svh;
   padding: 35px 20px;
   display: flex;
@@ -413,177 +416,272 @@ p {
   align-items: center;
 }
 
+.package-screen.active {
+  display: flex !important;
+}
+
 .package-screen .container {
-  max-width: 1050px;
+  width: 100%;
+  max-width: 900px;
 }
 
 .package-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 6vw, 65px);
-  font-weight: 400;
+  font-size: clamp(40px, 7vw, 65px);
   font-style: italic;
-  color: #3d1e2e;
-  text-shadow: 0 2px 12px #ffffff80;
-  margin: 15px 0 35px;
+  font-weight: 400;
+  color: #3D1E2E;
+  margin-bottom: 8px;
 }
 
 .package-subtitle {
-  color: #3d1e2e;
+  color: #3D1E2E;
   font-size: 15px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
 }
 
-.package-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 35px;
-  align-items: center;
-  max-width: 850px;
-  margin: auto;
-}
+/* 3D PACKAGE STAGE */
 
-/* WRAPPED PRESENT */
-
-.wrapped-present {
-  position: relative;
-  height: 245px;
-  max-width: 245px;
+.package-stage {
   width: 100%;
-  margin: auto;
-  background: linear-gradient(135deg, #f6d1ad, #dba982);
-  border-radius: 5px;
-  box-shadow: 0 15px 30px #0005;
-  border: 2px solid #d3a17d;
+  max-width: 570px;
+  height: 370px;
+  margin: 25px auto;
+  position: relative;
+  perspective: 1100px;
 }
 
-.wrapped-present::before {
+/* BOX BASE */
+
+.package-base {
+  position: absolute;
+  width: 310px;
+  height: 220px;
+  left: 50%;
+  top: 95px;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
+
+  background: linear-gradient(145deg, #c78d67, #956044);
+  border: 5px solid #9d694a;
+  border-radius: 8px;
+
+  box-shadow:
+    0 25px 35px #0005,
+    inset 0 0 20px #613d2b55;
+
+  transition: .7s;
+}
+
+/* FRONT WALL */
+
+.package-base::before {
   content: "";
   position: absolute;
-  width: 38px;
+  width: 100%;
+  height: 35px;
+  bottom: -35px;
+  left: -5px;
+  background: linear-gradient(#9d694a, #71452f);
+  border: 5px solid #805139;
+  transform: rotateX(-90deg);
+  transform-origin: top;
+}
+
+/* RIGHT WALL */
+
+.package-base::after {
+  content: "";
+  position: absolute;
+  width: 35px;
   height: 100%;
+  right: -35px;
+  top: -5px;
+  background: linear-gradient(90deg, #805139, #583724);
+  border: 5px solid #805139;
+  transform: rotateY(90deg);
+  transform-origin: left;
+}
+
+/* INSIDE OF THE BOX */
+
+.package-inside {
+  position: absolute;
+  inset: 12px;
+  background: linear-gradient(145deg, #e9c7a7, #b98662);
+  border: 3px solid #a47755;
+  border-radius: 4px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  padding: 12px;
+
+  opacity: 0;
+  transform: translateY(15px) scale(.8);
+  transition: .6s .4s;
+}
+
+/* GIFT BOX LID */
+
+.package-lid {
+  position: absolute;
+  width: 320px;
+  height: 230px;
+  left: 50%;
+  top: 85px;
+
+  transform: translateX(-50%) translateZ(18px);
+  transform-origin: left center;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 46%,
+      #c18a68 47%,
+      #f1d1b3 50%,
+      #c18a68 53%,
+      transparent 54%
+    ),
+    linear-gradient(180deg, #f1cba9, #d9a783);
+
+  border: 6px solid #b67d5b;
+  border-radius: 9px;
+
+  box-shadow:
+    0 10px 20px #0004,
+    inset 0 0 12px #fff6;
+
+  cursor: pointer;
+  z-index: 5;
+
+  transition:
+    transform 1.15s cubic-bezier(.68,-.2,.25,1.2),
+    opacity .5s;
+}
+
+/* SATIN BOW */
+
+.package-lid::after {
+  content: "🎀";
+  position: absolute;
+  font-size: 65px;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #ad7659, #f5d0ae, #ad7659);
+  filter: drop-shadow(0 5px 4px #603c2b66);
 }
 
-.wrapped-present::after {
+/* LID RIBBON */
+
+.package-lid::before {
   content: "";
   position: absolute;
-  height: 35px;
-  width: 100%;
-  top: 42%;
-  background: linear-gradient(#ad7659, #f5d0ae, #ad7659);
-}
-
-.present-bow {
-  position: absolute;
-  z-index: 2;
-  top: 25%;
+  height: 100%;
+  width: 32px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 65px;
-  filter: drop-shadow(0 3px 3px #71452c66);
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    #986348,
+    #f2d4b8,
+    #986348
+  );
 }
 
-.present-label {
-  position: absolute;
-  z-index: 3;
-  bottom: 12px;
-  width: 100%;
-  color: #633f30;
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
+/* OPENING ANIMATION */
+
+.package-stage.open .package-lid {
+  transform:
+    translateX(-135%)
+    translateY(-35px)
+    rotateZ(-12deg)
+    rotateY(-18deg);
+
+  opacity: .3;
+  pointer-events: none;
 }
 
-/* OPEN MEMORY BOX */
+.package-stage.open .package-inside {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
-.open-package {
-  position: relative;
-  background: linear-gradient(145deg, #a56b48, #71432d);
-  padding: 18px;
-  border: 7px solid #71432d;
+.package-stage.open .package-base {
+  transform: translateX(-50%) translateY(20px);
+}
+
+/* GIFTS INSIDE */
+
+.package-gift {
+  border: 2px solid #c79a7c;
   border-radius: 8px;
-  box-shadow: 0 15px 30px #0006;
-}
 
-.package-inner {
-  background: #d6b18c;
-  padding: 15px;
-  border: 3px solid #b88a62;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  position: relative;
-}
+  background: linear-gradient(145deg, #fff7ed, #eac9ae);
 
-.package-item {
-  min-height: 100px;
-  background: linear-gradient(145deg, #fff5e9, #f3d9c6);
-  border: 1px solid #d4a88d;
-  border-radius: 5px;
+  box-shadow:
+    0 5px 8px #583b2935,
+    inset 0 0 10px white;
+
+  min-width: 0;
+  min-height: 65px;
+  padding: 5px;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
-  padding: 10px 5px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+
+  font-size: 29px;
   cursor: pointer;
-  color: #633b32;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 32px;
   transition: .3s;
-  box-shadow: 0 4px 8px #583b2925;
 }
 
-.package-item span {
-  font-size: 12px;
+.package-gift span {
+  font-size: 10px;
   font-weight: 600;
+  color: #633e31;
 }
 
-.package-item:hover {
-  transform: translateY(-5px) scale(1.04);
-  background: #fff;
-  box-shadow: 0 8px 15px #583b2940;
+.package-gift:hover {
+  transform: translateY(-8px) rotateY(10deg);
+  box-shadow: 0 12px 15px #583b2955;
 }
 
-.package-item:last-child {
-  grid-column: 1 / -1;
-  min-height: 75px;
+.package-gift:last-child {
+  grid-column: 2;
 }
+
+/* INSTRUCTION */
 
 .package-instruction {
   display: inline-block;
+  padding: 11px 24px;
   background: #fff0d7;
-  color: #53392b;
-  border-radius: 25px;
-  padding: 10px 22px;
-  margin: 22px auto 0;
+  color: #54392e;
+  border-radius: 30px;
   font-size: 13px;
   box-shadow: 0 4px 12px #0002;
+  margin-top: 5px;
 }
 
-@media (max-width: 650px) {
+/* MOBILE */
+
+@media(max-width: 500px) {
+  .package-stage {
+    height: 330px;
+    transform: scale(.85);
+    transform-origin: top center;
+    margin-bottom: -35px;
+  }
+
   .package-screen {
-    padding: 35px 18px;
+    padding: 35px 12px;
   }
 
-  .package-layout {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    max-width: 380px;
-  }
-
-  .wrapped-present {
-    height: 170px;
-    max-width: 170px;
-  }
-
-  .present-bow {
-    font-size: 52px;
-  }
-
-  .package-item {
-    min-height: 90px;
+  .package-title {
+    font-size: 42px;
   }
 }
 
@@ -611,83 +709,86 @@ p {
 
 </section>
   
-<!-- MIDDLE PAGE: THE GIFT BOX -->
+<!-- MIDDLE PAGE: THE GIFT --!>
 
-<!-- MIDDLE PAGE: THE PACKAGE -->
+
+<!-- 3D PACKAGE MIDDLE PAGE -->
 
 <section id="gifts" class="screen hero package-screen">
 
   <div class="container">
 
-    <h1 class="package-title">You've a package</h1>
+    <h1 class="package-title">
+      You've a package
+    </h1>
 
     <p class="package-subtitle">
-      A little collection of things made with love ♡
+      A little something made with love ♡
     </p>
 
-    <div class="package-layout">
+    <div class="package-stage" id="packageStage">
 
-      <!-- CLOSED GIFT BOX -->
+      <!-- BOX BASE -->
 
-      <div class="wrapped-present">
+      <div class="package-base">
 
-        <div class="present-bow">🎀</div>
+        <!-- GIFTS INSIDE -->
 
-        <div class="present-label">
-          For my favourite person ♡
-        </div>
+        <div class="package-inside">
 
-      </div>
-
-      <!-- OPEN MEMORY BOX -->
-
-      <div class="open-package">
-
-        <div class="package-inner">
-
-          <button class="package-item"
+          <button class="package-gift"
             onclick="openGift('letter')">
             💌
             <span>Love Letter</span>
           </button>
 
-          <button class="package-item"
+          <button class="package-gift"
             onclick="openGift('coupons')">
             🎟️
-            <span>Love Coupons</span>
+            <span>Coupons</span>
           </button>
 
-          <button class="package-item"
+          <button class="package-gift"
             onclick="openGift('bouquet')">
             🌷
-            <span>Your Flowers</span>
+            <span>Flowers</span>
           </button>
 
-          <button class="package-item"
+          <button class="package-gift"
             onclick="openGift('riddles')">
             🧩
-            <span>Love Riddles</span>
+            <span>Riddles</span>
           </button>
 
-          <button class="package-item"
+          <button class="package-gift"
             onclick="openGift('hearts')">
             💗
-            <span>Catch Hearts</span>
+            <span>Hearts</span>
           </button>
 
         </div>
 
       </div>
 
+      <!-- CLICKABLE LID -->
+
+      <div
+        class="package-lid"
+        onclick="openPackage()"
+        title="Open your package">
+      </div>
+
     </div>
 
-    <div class="package-instruction">
-      Click items to open ♡
+    <div class="package-instruction"
+      id="packageInstruction">
+      Click the gift box to open ♡
     </div>
 
     <br>
 
-    <button class="primary" onclick="show('final')">
+    <button class="primary"
+      onclick="show('final')">
       One last surprise ♡
     </button>
 
