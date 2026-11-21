@@ -1016,6 +1016,27 @@ function startHearts() {
     `;
   }, 15000);
 }
+  
+// OPEN THE 3D PACKAGE
+
+function openPackage() {
+
+  const packageBox =
+    document.getElementById("packageStage");
+
+  const instruction =
+    document.getElementById("packageInstruction");
+
+  if (!packageBox ||
+      packageBox.classList.contains("open")) {
+    return;
+  }
+
+  packageBox.classList.add("open");
+
+  instruction.textContent =
+    "Your little surprises are waiting... Click to open ♡";
+}
 
 </script>
 
