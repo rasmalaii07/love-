@@ -1,4 +1,8 @@
 
+<HTML
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,25 +38,19 @@ button {
 }
 
 .screen {
-  display: none !important;
+  display: none;
   width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-  padding: 20px;
+  padding: 24px;
   animation: appear .7s ease;
 }
 
 .screen.active {
-  display: block !important;
-}
-
-#home.screen.active {
-  display: flex !important;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  padding: 24px;
 }
 
 @keyframes appear {
@@ -66,12 +64,11 @@ button {
   }
 }
 
-h1, h2, h3 {
-  font-family: 'Cormorant Garamond', serif;
+h1, h2 {
+  font-family: 'Playfair Display', serif;
 }
 
 h1 {
-  font-family: 'Playfair Display', serif;
   font-size: clamp(46px, 9vw, 76px);
   font-weight: 400;
   font-style: italic;
@@ -80,7 +77,7 @@ h1 {
 }
 
 h2 {
-  font-size: 38px;
+  font-size: 32px;
 }
 
 p {
@@ -97,22 +94,12 @@ p {
 }
 
 .hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 24px;
-  text-align: center;
   background-color: var(--cream);
   background-image:
     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px),
     radial-gradient(circle, #FFFFFF 4px, transparent 4.5px);
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
-  background-attachment: fixed;
   color: var(--dark);
 }
 
@@ -135,6 +122,7 @@ p {
 .container {
   max-width: 750px;
   margin: auto;
+  width: 100%;
 }
 
 .card {
@@ -147,56 +135,36 @@ p {
   box-shadow: 0 8px 25px #b77b8b0d;
 }
 
-.hero-icon {
-  font-size: 75px;
-  margin: 15px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-12px) rotate(5deg);
-}
-
-/* MOBILE */
-
 @media(max-width: 500px) {
-  .package-stage {
-    transform: scale(.85);
-    transform-origin: top center;
-    margin-bottom: -45px;
-  }
-
-  .package-title {
-    font-size: 42px;
+  .card {
+    padding: 20px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- WELCOME SCREEN -->
+<!-- FIRST PAGE -->
 <section id="home" class="screen active hero">
 
-  <h1>Happy Anniversary, <br>Love 💘</h1>
+  <h1>Happy Anniversary,<br>Love 💘</h1>
 
   <p class="subtitle">
     Cupid got us two years in a row
   </p>
 
-  <button class="primary" onclick="show('gifts')">
-  Next &lt;3
-</button>
+  <button class="primary" onclick="show('final')">
+    Next &lt;3
+  </button>
 
   <p style="font-size:12px">
     Made with love, just for you.
   </p>
 
 </section>
-  
-<!-- FINAL SURPRISE -->
+
+<!-- LAST PAGE -->
 <section id="final" class="screen hero">
 
   <div class="container">
@@ -228,9 +196,12 @@ p {
       </p>
 
       <h2 style="color:#c87593">
-        I love you. Always <3
+        I love you. Always &lt;3
       </h2>
-            <p><em>— H</em></p>
+
+      <p><em>— H</em></p>
+
+    </div>
 
   </div>
 
@@ -242,34 +213,10 @@ function show(id) {
     screen.classList.remove('active');
   });
 
-  const nextScreen = document.getElementById(id);
+  document.getElementById(id).classList.add('active');
 
-  if (nextScreen) {
-    nextScreen.classList.add('active');
-    window.scrollTo(0, 0);
-  }
+  window.scrollTo(0, 0);
 }
-  
-const bouquetLink = "https://digibouquet.vercel.app/bouquet/ab5fcfaa-a948-4004-adb2-181bfe8933d9";
-
-function openGift(type) {
-  const popup = document.getElementById("giftPopup");
-  const content = document.getElementById("giftContent");
-
-  popup.classList.add("active");
-
-  if (type === "letter") {
-    content.innerHTML = `
-      <h2>A Letter For You</h2>
-      <p>
-        My favourite person, I wish I could put into
-        words how much you mean to me.
-        Every little moment with you is special,
-        and I hope you never forget how loved you are.
-      </p>
-    `;
-  }
-
 </script>
 
 </body>
